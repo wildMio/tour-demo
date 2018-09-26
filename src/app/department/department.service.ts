@@ -1,0 +1,40 @@
+import { Injectable, Inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
+
+interface Model {
+  name: string;
+  id?: number;
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DepartmentService {
+  private _departments$ = new BehaviorSubject<Model[]>([]);
+  hasGetValue = false;
+
+  constructor(
+    private http: HttpClient,
+    @Inject('url') private url
+  ) { }
+
+  addDepartment(body) {
+    return this.http.post<Model>(this.url + 'departments', body)
+      .subscribe(res => this._departments$.next(this._departments$.getValue().concat(res)));
+  }
+
+  deleteDepartment(id) {
+    return this.http.delete<Model>(this.url + 'departments/' + id, {})
+      .subscribe(res => this._departments$.next(this._departments$.getValue()
+        .filter(department => department.id !== id)));
+  }
+
+  getDepartments() {
+    if (!this.hasGetValue) {
+      this.hasGetValue = true;
+      this.http.get<Model[]>(this.url + 'departments').subscribe(res => this._departments$.next(res));
+    }
+    return this._departments$.asObservable();
+  }
+}

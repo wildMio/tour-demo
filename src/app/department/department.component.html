@@ -1,0 +1,17 @@
+
+<mat-card>
+  <mat-form-field>
+    <input matInput [formControl]="control" placeholder="部門名稱">
+    <mat-error *ngIf="control.touched">必填</mat-error>
+  </mat-form-field>
+  <button mat-button (click)="add(control)">新增</button>
+</mat-card>
+
+<mat-card *ngFor="let department of departments$ | async">
+  <div>
+    <span>名稱: {{department.name}}, id: {{department.id}}</span>
+    <button mat-icon-button (click)="delete(department.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</mat-card>

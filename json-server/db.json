@@ -1,0 +1,22 @@
+{
+  "departments": [
+    {
+      "name": "永和耕莘醫院",
+      "id": 1
+    },
+    {
+      "name": "恩樺醫院",
+      "id": 2
+    },
+    {
+      "name": "輔大診所",
+      "id": 3
+    },
+    {
+      "name": "米歐醫院",
+      "id": 4
+    }
+  ],
+  "vehicles": [],
+  "vehicleSchedules": []
+}

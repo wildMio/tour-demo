@@ -1,0 +1,7 @@
+.mat-card {
+  margin: 24px;
+  & > div {
+    display: flex;
+    justify-content: space-between;
+  }
+}
