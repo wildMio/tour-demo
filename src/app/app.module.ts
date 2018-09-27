@@ -8,11 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 // tslint:disable-next-line:max-line-length
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule, MatDialogModule, MatButtonToggleModule, MatDatepickerModule } from '@angular/material';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { VehicleComponent } from './vehicle/vehicle.component';
 import { VehicleScheduleComponent } from './vehicle-schedule/vehicle-schedule.component';
 import { DepartmentComponent } from './department/department.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditorComponent } from './vehicle/editor/editor.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MainNavComponent,
     VehicleComponent,
     VehicleScheduleComponent,
-    DepartmentComponent
+    DepartmentComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatAutocompleteModule,
+    MatDialogModule,
+    MatButtonToggleModule,
+    MatDatepickerModule,
+    MatMomentDateModule
   ],
+  entryComponents: [EditorComponent],
   providers: [{provide: 'url', useValue: 'http://localhost:3000/'}],
   bootstrap: [AppComponent]
 })

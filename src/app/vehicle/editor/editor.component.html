@@ -1,5 +1,5 @@
 <mat-card>
-  <form [formGroup]="group" (ngSubmit)="add(group)">
+  <form [formGroup]="group" (ngSubmit)="onSubmit(group)">
     <mat-form-field>
       <input type="text" matInput formControlName="name" placeholder="車牌號碼">
       <mat-error *ngIf="group.get('name').touched">必填</mat-error>
@@ -41,18 +41,4 @@
       <button #reset [ngStyle]="{'visibility': 'hidden'}" type="reset"></button>
     </div>
   </form>
-</mat-card>
-
-<mat-card *ngFor="let vehicle of vehicles$ | async">
-  <div>
-    <span>車牌: {{vehicle.name}}, id: {{vehicle.id}}</span>
-    <span>
-      <button mat-icon-button (click)="edit(vehicle)">
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button mat-icon-button (click)="delete(vehicle.id)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </span>
-  </div>
 </mat-card>

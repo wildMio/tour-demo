@@ -15,8 +15,86 @@
     {
       "name": "米歐醫院",
       "id": 4
+    },
+    {
+      "name": "伈創醫院",
+      "id": 5
     }
   ],
-  "vehicles": [],
+  "vehicles": [
+    {
+      "name": "1212-qq",
+      "department": "永和耕莘醫院",
+      "equipments": [],
+      "contactPerson": {
+        "name": "W",
+        "phone": "33"
+      },
+      "id": 1
+    },
+    {
+      "name": "5567-yy",
+      "department": "輔大診所",
+      "equipments": [
+        {
+          "name": "儀器規格",
+          "content": "四槽洗片機，讀片時間短，讓受檢者縮短等候時間 (均通過原子能委員會及FDA合格認證)"
+        }
+      ],
+      "contactPerson": {
+        "name": "O",
+        "phone": "9"
+      },
+      "id": 3
+    },
+    {
+      "name": "22-test",
+      "department": "輔大診所",
+      "equipments": [
+        {
+          "name": "aa",
+          "content": "cc"
+        },
+        {
+          "name": "bb",
+          "content": "dd"
+        }
+      ],
+      "contactPerson": {
+        "name": "YH",
+        "phone": "213"
+      },
+      "id": 4
+    },
+    {
+      "name": "8816-ui",
+      "department": "伈創醫院",
+      "equipments": [
+        {
+          "name": "pp",
+          "content": "oo"
+        },
+        {
+          "name": "ii",
+          "content": "uu"
+        }
+      ],
+      "contactPerson": {
+        "name": "E",
+        "phone": "30"
+      },
+      "id": 5
+    },
+    {
+      "id": 6,
+      "name": "2333",
+      "department": "2",
+      "equipments": [],
+      "contactPerson": {
+        "name": "2",
+        "phone": "2"
+      }
+    }
+  ],
   "vehicleSchedules": []
 }

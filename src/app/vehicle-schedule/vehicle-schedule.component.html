@@ -1,3 +1,83 @@
-<p>
-  vehicle-schedule works!
-</p>
+<mat-card>
+  <form [formGroup]="group" (ngSubmit)="add(group)">
+    <mat-form-field class="date" appearance="fill" floatLabel="never">
+      <input matInput [matDatepicker]="startpicker" formControlName="startTime" placeholder="開始日期" (click)="startpicker.open()">
+      <mat-datepicker #startpicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="date" appearance="fill" floatLabel="never">
+      <input matInput placeholder="開始時間" [matAutocomplete]="auto" [value]="timeOptions[9] | date: 'shortTime'">
+      <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption (optionSelected)="setTime($event, group.get('startTime'))">
+        <mat-option *ngFor="let option of timeOptions" [value]="option | date: 'shortTime'">
+          {{option | date: 'shortTime'}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    到
+    <mat-form-field class="date" appearance="fill" floatLabel="never">
+      <input matInput [matDatepicker]="endpicker" formControlName="endTime" placeholder="結束日期" (click)="endpicker.open()">
+      <mat-datepicker #endpicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="date" appearance="fill" floatLabel="never">
+      <input matInput placeholder="結束時間" [matAutocomplete]="endauto" [value]="timeOptions[10] | date: 'shortTime'">
+      <mat-autocomplete #endauto="matAutocomplete" autoActiveFirstOption (optionSelected)="setTime($event, group.get('endTime'))">
+        <mat-option *ngFor="let option of timeOptions" [value]="option | date: 'shortTime'">
+          {{option | date: 'shortTime'}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <!-- <mat-form-field>
+      <input type="text" matInput formControlName="name" placeholder="車牌號碼">
+      <mat-error *ngIf="group.get('name').touched">必填</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="text" placeholder="選擇部門" aria-label="Number" matInput formControlName="department" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let department of departments$ | async" [value]="department.name">
+          {{department.name}}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-error *ngIf="group.get('department').touched">必填</mat-error>
+    </mat-form-field>
+    <ng-container formGroupName="contactPerson">
+      <mat-form-field>
+        <input type="text" matInput formControlName="name" placeholder="聯絡人姓名">
+        <mat-error *ngIf="group.get('contactPerson').get('name').touched">必填</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" matInput formControlName="phone" placeholder="聯絡人電話">
+        <mat-error *ngIf="group.get('contactPerson').get('phone').touched">必填</mat-error>
+      </mat-form-field>
+    </ng-container>
+    <ng-container formArrayName="equipments">
+      <ng-container *ngFor="let equipment of group.get('equipments')['controls'], let i = index" [formGroupName]="i">
+        <mat-form-field>
+          <input type="text" matInput formControlName="name" placeholder="設備名稱">
+          <mat-error *ngIf="equipment.get('name').touched">必填</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput formControlName="content" placeholder="設備內容">
+          <mat-error *ngIf="equipment.get('content').touched">必填</mat-error>
+        </mat-form-field>
+      </ng-container>
+    </ng-container> -->
+    <div>
+      <button type="submit" mat-button>新增</button>
+      <button #reset [ngStyle]="{'visibility': 'hidden'}" type="reset"></button>
+    </div>
+  </form>
+</mat-card>
+
+<mat-card *ngFor="let vehicleSchedule of vehicleSchedules$ | async">
+  <div>
+    <span>id: {{vehicleSchedule.id}}</span>
+    <span>
+      <button mat-icon-button (click)="edit(vehicleSchedule)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="delete(vehicleSchedule.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </span>
+  </div>
+</mat-card>

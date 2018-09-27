@@ -10,11 +10,23 @@ const routes: Routes = [
     component: DepartmentComponent
   },
   {
+    path: 'department/:userType',
+    component: DepartmentComponent
+  },
+  {
     path: 'vehicle',
     component: VehicleComponent
   },
   {
+    path: 'vehicle/:userType',
+    component: VehicleComponent
+  },
+  {
     path: 'vehicle-schedule',
+    component: VehicleScheduleComponent
+  },
+  {
+    path: 'vehicle-schedule/:userType',
     component: VehicleScheduleComponent
   }
 ];
